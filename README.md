@@ -15,4 +15,14 @@ Client
 
 Server
 ```javascript
+var rtc = require('rtc.io');
+rtc.onSync(function( data){
+    var peers = rtc.getConnectedPeers()
+    for node in peers {
+        if (node.page == 'chat'){
+            rtc.connect(me,node);
+        }
+    }
+});
+
 ```
