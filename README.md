@@ -10,6 +10,13 @@ Client
     server = rtc.sync(server, [video1]);
     rtc.onSync(console.log('Connected to server' );
     rtc.onConnect('initialize video screen for stream');
+
+    
+    rtc.sync(serverIP, [list of arbitrary types]);
+    rtc.addPeers();
+    rtc.addPeer(peer, success(), fail());
+    rtc.onConnect( do stuff);
+
 </script>
 ```
 
@@ -24,5 +31,9 @@ rtc.onSync(function( data){
         }
     }
 });
+
+rtc.sendPeer([list of peers]);
+rtc.onSync();
+rtc.getPeers();
 
 ```
