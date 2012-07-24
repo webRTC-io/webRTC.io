@@ -1,5 +1,4 @@
-
-module.exports ={
+module.exports = {
 	connections: [],
 
 	addPeer: function(socket, peer) {
@@ -12,9 +11,9 @@ module.exports ={
 	},
 
 	removePeer: function(socket) {
-		for(var i=0; i<connections.length; i++) {
-			
-			if(connections[i].id === socket.id){
+		for (var i = 0; i < connections.length; i++) {
+
+			if (connections[i].id === socket.id) {
 				connections.splice(i, 1);
 			}
 		}
@@ -23,8 +22,9 @@ module.exports ={
 	getPeers: function() {
 		var peers = [];
 
-		for(con in this.connections) {
-			peers.push(con.peer);
+		for (var i = 0, len = this.connections.length; i < len; i++) {
+			var connection = this.connections[i];
+			peers.push(connection.peer);
 		}
 
 		return peers;
@@ -32,8 +32,10 @@ module.exports ={
 
 	getFromPeer: function(peer) {
 
-		for(con in this.connections) {
-			if(con.peer === peer){
+		for (var i = 0, len = this.connections.length; i < len; i++) {
+			var connection = this.connections[i];
+
+			if (connection.peer === peer) {
 				return con;
 			}
 		}
@@ -41,9 +43,10 @@ module.exports ={
 
 	getFromSocket: function(socket) {
 
-		for(con in this.connections) {
-			if(con.socket === socket){
-				return con;
+		for (var i = 0, len = this.connections.length; i < len; i++) {
+			var connection = this.connections[i];
+			if (connection.socket === socket) {
+				return connection;
 			}
 		}
 	}
