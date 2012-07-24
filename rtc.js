@@ -1,14 +1,14 @@
-var rtc = {
 
+module.exports ={
 	connections: [],
 
-	addPeer: function(peer, socket) {
+	addPeer: function(socket, peer) {
 		var connection = {
 			id: socket.id,
 			socket: socket,
 			peer: peer
 		};
-		connections.push(connection);
+		this.connections.push(connection);
 	},
 
 	removePeer: function(socket) {
@@ -23,7 +23,7 @@ var rtc = {
 	getPeers: function() {
 		var peers = [];
 
-		for(con in connections) {
+		for(con in this.connections) {
 			peers.push(con.peer);
 		}
 
@@ -32,7 +32,7 @@ var rtc = {
 
 	getFromPeer: function(peer) {
 
-		for(con in connections) {
+		for(con in this.connections) {
 			if(con.peer === peer){
 				return con;
 			}
@@ -41,7 +41,7 @@ var rtc = {
 
 	getFromSocket: function(socket) {
 
-		for(con in connections) {
+		for(con in this.connections) {
 			if(con.socket === socket){
 				return con;
 			}

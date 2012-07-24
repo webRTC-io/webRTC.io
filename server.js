@@ -1,11 +1,9 @@
 var io = require('socket.io').listen(8000);
 var rtc = require('./rtc');
 
-
 //SYNC KEEP TRACK OF PEERS
-io.sockets.on('sync', function(socket, peer) {
+io.sockets.on('connection', function(socket, peer) {
 	console.log("sync received");
-
 	rtc.addPeer(socket, peer);
 
 	var peers = rtc.getPeers();
