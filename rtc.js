@@ -2,7 +2,7 @@ var rtc = {
 
 	connections: [],
 
-	addPeer: function addPeer(peer, socket) {
+	addPeer: function(peer, socket) {
 		var connection = {
 			id: socket.id,
 			socket: socket,
