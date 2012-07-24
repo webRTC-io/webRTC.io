@@ -30,7 +30,7 @@ var rtc = {
 		return peers;
 	},
 
-	getFromPeer: function getFromPeer(peer) {
+	getFromPeer: function(peer) {
 
 		for(con in connections) {
 			if(con.peer === peer){
@@ -39,7 +39,7 @@ var rtc = {
 		}
 	},
 
-	getFromSocket: function getFromSocket(socket) {
+	getFromSocket: function(socket) {
 
 		for(con in connections) {
 			if(con.socket === socket){
