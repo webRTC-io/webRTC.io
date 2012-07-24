@@ -1,13 +1,14 @@
 var io = require('socket.io').listen(8000);
+var rtc = require('./rtc');
 
-io.sockets.on('onSync', function (socket, Peer) {
+io.sockets.on('sync', function (socket, Peer) {
 	rtc.addPeer(Peer);
 
 	if(rtc.getPeers()){
-		socket.emit('addPeers', { peers: rtc.getPeers()});
+		socket.emit('add peers', { peers: rtc.getPeers()});
 	}
 });
 
 io.sockets.on('onSyncEnd', function (socket, Peer) {
-	rtc.removePeer(Peer);x
+	rtc.removePeer(Peer);
 });
