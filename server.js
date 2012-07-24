@@ -1,62 +1,59 @@
 var io = require('socket.io').listen(8000);
-var rtc = require('./rtc');
+//var rtc = require('./rtc');
+var connections = [];
 
-//SYNC KEEP TRACK OF PEERS
-io.sockets.on('connection', function(socket, peer) {
-	console.log("sync received");
-	rtc.addPeer(socket, peer);
+io.sockets.on('connection', function(socket) {
+	console.log("connection received");
 
-	var peers = rtc.getPeers();
-	
-	if (peers) {
-		socket.emit('add peers', {
-			peers: peers
-		});
+	connections.push(socket);
+
+	console.log(connections);
+
+	var connectionsId = [];
+
+	for (var i = 0, len = connections.length; i < len; i++) {
+		var id = connections[i].id
+
+		if (id != socket.id) {
+			connectionsId.push(id);
+		}
 	}
+
+	socket.emit('connections', {
+		connections: connectionsId
+	});
+
+	socket.on('disconnect', function() {
+		console.log("disconnect received");
+		console.log(arguments);
+		if (connections.length > 0) {
+			for (var i = 0, len = connections.length; i < len; i++) {
+				console.log(connections[i]);
+
+				var id = connections[i].id;
+
+				if (id == socket.id) {
+					connections.splice(i, 1);
+					i--;
+				}
+			}
+
+		}
+	});
+
+	socket.on('ice candidate', function(data) {
+		console.log("ice candidate received");
+		socket.broadcast.emit('receive ice candidate', data);
+	});
+
+	socket.on('send offer', function(data) {
+		console.log("offer received");
+		socket.broadcast.emit('receive offer', data);
+	});
+
+	socket.on('send answer', function(data) {
+		console.log("answer received");
+		socket.broadcast.emit('receive answer', data);
+	});
+
 });
-
-io.sockets.on('sync end', function(socket) {
-	rtc.removePeer(socket);
-});
-
-
-//CONNECT PEERS
-io.sockets.on('ice candidate', function(data) {
-	console.log("ice candidate received");
-	socket.broadcast.emit('receive ice candidate', data);
-});
-
-io.sockets.on('send offer', function(data) {
-	console.log("offer received");
-	socket.broadcast.emit('receive offer', data);
-});
-
-io.sockets.on('send answer', function(data) {
-	console.log("answer received");
-	socket.broadcast.emit('receive answer', data);
-});
-
-
-//CONNECT PEER
-io.sockets.on('ice candidate peer', function(data, peer) {
-	console.log("ice candidate received");
-
-	var peerSocket = rtc.getSocketFromPeer(peer);
-
-	peerSocket.emit('receive ice candidate', data);
-});
-
-io.sockets.on('send offer peer', function(data, peer) {
-	console.log("offer received");
-
-	var peerSocket = rtc.getSocketFromPeer(peer);
-	peerSocket.emit('receive offer', data);
-});
-
-io.sockets.on('send answer peer', function(data, peer) {
-	console.log("answer received");
-
-	var peerSocket = rtc.getSocketFromPeer(peer);
-	peerSocket.emit('receive answer', data);
-});
-
