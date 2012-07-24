@@ -1,17 +1,17 @@
 var rtc = {
 
-	var connections = [],
+	connections: [],
 
 	addPeer: function addPeer(peer, socket) {
 		var connection = {
-			id: socket.id;
-			socket: socket;
-			peer: peer;
+			id: socket.id,
+			socket: socket,
+			peer: peer
 		};
 		connections.push(connection);
 	},
 
-	removePeer: function removePeer(socket) {
+	removePeer: function(socket) {
 		for(var i=0; i<connections.length; i++) {
 			
 			if(connections[i].id === socket.id){
@@ -20,7 +20,7 @@ var rtc = {
 		}
 	},
 
-	getPeers: function getPeers() {
+	getPeers: function() {
 		var peers = [];
 
 		for(con in connections) {

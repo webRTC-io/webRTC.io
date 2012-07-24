@@ -23,24 +23,24 @@ io.sockets.on('sync end', function(socket) {
 
 
 //CONNECT PEERS
-socket.on('ice candidate', function(data) {
+io.sockets.on('ice candidate', function(data) {
 	console.log("ice candidate received");
 	socket.broadcast.emit('receive ice candidate', data);
 });
 
-socket.on('send offer', function(data) {
+io.sockets.on('send offer', function(data) {
 	console.log("offer received");
 	socket.broadcast.emit('receive offer', data);
 });
 
-socket.on('send answer', function(data) {
+io.sockets.on('send answer', function(data) {
 	console.log("answer received");
 	socket.broadcast.emit('receive answer', data);
 });
 
 
 //CONNECT PEER
-socket.on('ice candidate peer', function(data, peer) {
+io.sockets.on('ice candidate peer', function(data, peer) {
 	console.log("ice candidate received");
 
 	var peerSocket = rtc.getSocketFromPeer(peer);
@@ -48,14 +48,14 @@ socket.on('ice candidate peer', function(data, peer) {
 	peerSocket.emit('receive ice candidate', data);
 });
 
-socket.on('send offer peer', function(data, peer) {
+io.sockets.on('send offer peer', function(data, peer) {
 	console.log("offer received");
 
 	var peerSocket = rtc.getSocketFromPeer(peer);
 	peerSocket.emit('receive offer', data);
 });
 
-socket.on('send answer peer', function(data, peer) {
+io.sockets.on('send answer peer', function(data, peer) {
 	console.log("answer received");
 
 	var peerSocket = rtc.getSocketFromPeer(peer);
