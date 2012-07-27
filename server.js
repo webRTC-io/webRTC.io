@@ -32,7 +32,7 @@ io.sockets.on('connection', function(socket) {
 		}
 	});
 
-	socket.on('ice candidate', function(socketId, data) {
+	socket.on('receive ice candidate', function(socketId, data) {
 		console.log("ice candidate received");
 
 		var soc = getSocket(socketId);
@@ -40,7 +40,7 @@ io.sockets.on('connection', function(socket) {
 		if (soc) {
 			soc.emit('receive ice candidate', {
 				data: data,
-				socketId: socketId
+				socketId: socket.id
 			});
 		}
 	});
@@ -53,7 +53,7 @@ io.sockets.on('connection', function(socket) {
 		if (soc) {
 			soc.emit('receive offer', {
 				data: data,
-				socketId: socketId
+				socketId: socket.id
 			});
 		}
 	});
@@ -66,7 +66,7 @@ io.sockets.on('connection', function(socket) {
 		if (soc) {
 			soc.emit('receive answer', {
 				data: data,
-				socketId: socketId
+				socketId: socket.id
 			});
 		}
 	});
