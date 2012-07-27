@@ -1,17 +1,10 @@
 var io = require('socket.io').listen(8000);
-//var rtc = require('./rtc');
 var connections = [];
 
 io.sockets.on('connection', function(socket) {
 	console.log("connection received");
 
-	if (!socket) {
-		console.log("dafuq");
-	}
-
 	connections.push(socket);
-
-	console.log(connections);
 
 	var connectionsId = [];
 
@@ -29,32 +22,66 @@ io.sockets.on('connection', function(socket) {
 
 	socket.on('disconnect', function() {
 		console.log("disconnect received");
-		if (connections.length > 0) {
-			for (var i = 0; i < connections.length; i++) {
-				var id = connections[i].id;
+		for (var i = 0; i < connections.length; i++) {
+			var id = connections[i].id;
 
-				if (id == socket.id) {
-					connections.splice(i, 1);
-					i--;
-				}
+			if (id == socket.id) {
+				connections.splice(i, 1);
+				i--;
 			}
-
 		}
 	});
 
-	socket.on('ice candidate', function(data) {
+	socket.on('ice candidate', function(socketId, data) {
 		console.log("ice candidate received");
-		socket.broadcast.emit('receive ice candidate', data);
+
+		var soc = getSocket(socketId);
+
+		if (soc) {
+			soc.emit('receive ice candidate', {
+				data: data,
+				socketId: socketId
+			});
+		}
 	});
 
-	socket.on('send offer', function(data) {
+	socket.on('send offer', function(socketId, data) {
 		console.log("offer received");
-		socket.broadcast.emit('receive offer', data);
+
+		var soc = getSocket(socketId);
+
+		if (soc) {
+			soc.emit('receive offer', {
+				data: data,
+				socketId: socketId
+			});
+		}
 	});
 
-	socket.on('send answer', function(data) {
+	socket.on('send answer', function(socketId, data) {
 		console.log("answer received");
-		socket.broadcast.emit('receive answer', data);
+
+		var soc = getSocket(socketId);
+
+		if (soc) {
+			soc.emit('receive answer', {
+				data: data,
+				socketId: socketId
+			});
+		}
 	});
 
 });
+
+
+function getSocket(id) {
+
+	for (var i = 0; i < connections.length; i++) {
+
+		var socket = connections[i];
+
+		if (id == socket.id) {
+			return socket;
+		}
+	}
+}
