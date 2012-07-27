@@ -5,6 +5,10 @@ var connections = [];
 io.sockets.on('connection', function(socket) {
 	console.log("connection received");
 
+	if (!socket) {
+		console.log("dafuq");
+	}
+
 	connections.push(socket);
 
 	console.log(connections);
@@ -25,11 +29,8 @@ io.sockets.on('connection', function(socket) {
 
 	socket.on('disconnect', function() {
 		console.log("disconnect received");
-		console.log(arguments);
 		if (connections.length > 0) {
-			for (var i = 0, len = connections.length; i < len; i++) {
-				console.log(connections[i]);
-
+			for (var i = 0; i < connections.length; i++) {
 				var id = connections[i].id;
 
 				if (id == socket.id) {
