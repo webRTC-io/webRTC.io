@@ -1,10 +1,11 @@
 var io = require('socket.io').listen(8001);
 var connections = [];
+var colors = {};
 
 io.sockets.on('connection', function(socket) {
 	console.log("connection received");
-
 	connections.push(socket);
+        colors[socket.id] = Math.floor(Math.random()* 0xFFFFFF)
 
 	var connectionsId = [];
 
@@ -23,7 +24,8 @@ io.sockets.on('connection', function(socket) {
 	socket.broadcast.emit('new peer connected', { socketId: socket.id });
 
 	socket.on('disconnect', function() {
-		console.log("disconnect received");
+
+		console.log("*******************************disconnect received");
 		for (var i = 0; i < connections.length; i++) {
 			var id = connections[i].id;
 
@@ -79,9 +81,7 @@ io.sockets.on('connection', function(socket) {
 	socket.on('chat msg', function(msg) {
 		console.log("chat received");
 		
-		var color = parseInt(socket.id, 10) % 0xFFFFFF;
-
-		socket.broadcast.emit('receive chat msg', { msg: msg, color: color });
+		socket.broadcast.emit('receive chat msg', { msg: msg, color: colors[socket.id]});
 	});
 
 });
