@@ -30,6 +30,7 @@ io.sockets.on('connection', function(socket) {
 			if (id == socket.id) {
 				connections.splice(i, 1);
 				i--;
+				socket.broadcast.emit('remove peer connected', socket.id);
 			}
 		}
 	});
