@@ -20,6 +20,8 @@ io.sockets.on('connection', function(socket) {
 		connections: connectionsId
 	});
 
+	socket.broadcast.emit('new peer connected', socket.id);
+
 	socket.on('disconnect', function() {
 		console.log("disconnect received");
 		for (var i = 0; i < connections.length; i++) {
@@ -35,10 +37,14 @@ io.sockets.on('connection', function(socket) {
 	socket.on('receive ice candidate', function(data) {
 		console.log("ice candidate received");
 
-		socket.broadcast.emit('receive ice candidate', {
-			label: data.label,
-			candidate: data.candidate
-		});
+		var soc = getSocket(data.socketId);
+
+		if (soc) {
+			soc.emit('receive ice candidate', {
+				label: data.label,
+				candidate: data.candidate
+			});
+		}
 	});
 
 	socket.on('send offer', function(data) {
