@@ -42,7 +42,8 @@ io.sockets.on('connection', function(socket) {
 		if (soc) {
 			soc.emit('receive ice candidate', {
 				label: data.label,
-				candidate: data.candidate
+				candidate: data.candidate,
+				socketId: socket.id
 			});
 		}
 	});
