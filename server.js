@@ -69,7 +69,8 @@ io.sockets.on('connection', function(socket) {
 
 		if (soc) {
 			soc.emit('receive answer', {
-				sdp: data.sdp
+				sdp: data.sdp,
+				socketId: socket.id
 			});
 		}
 	});
