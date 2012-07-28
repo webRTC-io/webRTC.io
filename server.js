@@ -78,8 +78,10 @@ io.sockets.on('connection', function(socket) {
 
 	socket.on('chat msg', function(msg) {
 		console.log("chat received");
+		
+		var color = parseInt(socket.id, 10) % 0xFFFFFF;
 
-		socket.broadcast.emit('receive chat msg', msg);
+		socket.broadcast.emit('receive chat msg', { msg: msg, color: color });
 	});
 
 });
