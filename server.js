@@ -20,7 +20,7 @@ io.sockets.on('connection', function(socket) {
 		connections: connectionsId
 	});
 
-	socket.broadcast.emit('new peer connected', socket.id);
+	socket.broadcast.emit('new peer connected', { socketId: socket.id });
 
 	socket.on('disconnect', function() {
 		console.log("disconnect received");
@@ -30,7 +30,7 @@ io.sockets.on('connection', function(socket) {
 			if (id == socket.id) {
 				connections.splice(i, 1);
 				i--;
-				socket.broadcast.emit('remove peer connected', socket.id);
+				socket.broadcast.emit('remove peer connected', { socketId: socket.id });
 			}
 		}
 	});
