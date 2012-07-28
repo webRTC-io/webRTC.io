@@ -16,7 +16,7 @@ io.sockets.on('connection', function(socket) {
 		}
 	}
 
-	socket.emit('connections', {
+	socket.emit('get peers', {
 		connections: connectionsId
 	});
 
@@ -61,9 +61,8 @@ io.sockets.on('connection', function(socket) {
 
 		if (soc) {
 			soc.emit('receive answer', {
-				data: data,
-        socketId: socket.id
-			});
+				sdp: data.sdp
+      });
 		}
 	});
 
