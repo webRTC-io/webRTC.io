@@ -35,10 +35,10 @@ io.sockets.on('connection', function(socket) {
 	socket.on('receive ice candidate', function(data) {
 		console.log("ice candidate received");
 
-	  socket.broadcast.emit('receive ice candidate', {
-      label: data.label,
-      candidate: data.candidate
-    });
+		socket.broadcast.emit('receive ice candidate', {
+			label: data.label,
+			candidate: data.candidate
+		});
 	});
 
 	socket.on('send offer', function(data) {
@@ -62,8 +62,15 @@ io.sockets.on('connection', function(socket) {
 		if (soc) {
 			soc.emit('receive answer', {
 				sdp: data.sdp
-      });
+			});
 		}
+	});
+
+
+	socket.on('chat msg', function(msg) {
+		console.log("chat received");
+
+		socket.broadcast.emit('receive chat msg', msg);
 	});
 
 });
