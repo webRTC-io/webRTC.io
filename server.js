@@ -44,7 +44,7 @@ io.sockets.on('connection', function(socket) {
 			soc.emit('receive ice candidate', {
 				label: data.label,
 				candidate: data.candidate,
-				socketId: soc.id
+				socketId: socekt.id
 			});
 		}
 	});
