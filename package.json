@@ -1,0 +1,23 @@
+{
+  "name": "webrtc.io",
+  "version": "0.0.0",
+  "description": "Abstraction for webRTC.",
+  "main": "webrtc.io.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cavedweller/webRTC.io.git"
+  },
+  "dependencies": {
+    "webrtc.io-client": "0.0.0"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": "Ben Brittain",
+  "contributors": [
+      { "name": "Ben Brittain", "email": "ben@brittain.org" }
+    , { "name": "Dennis Mårtensson", "email": "me@dennis.is" }
+    , { "name": "David Peter", "email": "david.a.peter@gmail.com" }
+  ],
+  "license": "MIT"
+}
