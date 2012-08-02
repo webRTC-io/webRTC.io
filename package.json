@@ -2,7 +2,7 @@
   "name": "webrtc.io",
   "version": "0.0.0",
   "description": "Abstraction for webRTC.",
-  "main": "webrtc.io.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/cavedweller/webRTC.io.git"

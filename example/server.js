@@ -1,4 +1,4 @@
-var io = require('./webrtc.io').listen(8001);
+var io = require('../lib/webrtc.io').listen(8001);
 var colors = {};
 
 io.sockets.on('connection', function(socket) {
