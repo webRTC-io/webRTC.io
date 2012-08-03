@@ -26,8 +26,7 @@ $ npm install webrtc.io
 ## Server
 
 ```javascript
-var io = require('webrtc.io');
-io.listen(8000);
+var io = require('webrtc.io').listen(8000);
 // this is a simple wrapper around socket.io, so you can define your own events
 // like so:
 io.sockets.on('connection', function(socket) {
