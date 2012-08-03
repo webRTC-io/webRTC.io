@@ -26,8 +26,10 @@ Enable Media Source API on <video> elements. (this may be unnecessary)
 Enable MediaStream (this may be unnecessary)
 Enable PeerConnection
 ```
+## Example code
 
-## Client
+### Client
+
 
 ```html
 <video id="local" autoplay></video>
@@ -42,7 +44,7 @@ Enable PeerConnection
 </script>
 ```
 
-## Server
+### Server
 
 ```javascript
 var io = require('webrtc.io').listen(8000);
@@ -57,5 +59,5 @@ io.sockets.on('connection', function(socket) {
 
 ## Stumped?
 ```
-#webrtc.io
+#webrtc.io on freenode
 ```
