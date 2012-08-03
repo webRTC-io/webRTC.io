@@ -10,7 +10,7 @@ Currently the webRTC standard is very focused on the video & audio aspects of th
 Unfortunately, a server (or two) will still be required for two reasons, The media for the page must be initially supplied, and the server, in conjunction with a [STUN server](http://en.wikipedia.org/wiki/STUN) (abstracted away by the webRTC.io library), is required to synchronize the connections.
 
 ## Demo
-This is a multi-person chat room demo written using our webRTC.io library. [Example Site](multiwebrtc.nodejitsu.com) & [Repository](www.github.com/dennismartensson/webrtc.io-demo/) (browser support section still applies!)
+This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://multiwebrtc.nodejitsu.com) & [Repository](http://www.github.com/dennismartensson/webrtc.io-demo/) (browser support section still applies!)
 
 ## Installation
 
