@@ -10,7 +10,7 @@ Currently the webRTC standard is very focused on the video & audio aspects of th
 Unfortunately, a server (or two) will still be required for two reasons, The media for the page must be initially supplied, and the server, in conjunction with a [STUN server](http://en.wikipedia.org/wiki/STUN) (abstracted away by the webRTC.io library), is required to synchronize the connections.
 
 ## Browser Support
-webRTC is supported in very few browsers. We recommend either chrome frome either the dev channel or the canary release.
+webRTC is supported in very few browsers. We recommend either chrome from either the dev channel or the canary release.
 After installation, go to [About://flags](chrome://flags/). Enable
 ```
 Enable Media Source API on <video> elements. (this may be unnecessary)
@@ -22,16 +22,9 @@ Enable PeerConnection
 This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://multiwebrtc.nodejitsu.com) & [Repository](http://www.github.com/dennismartensson/webrtc.io-demo/) (browser support section still applies!)
 
 ## Installation
-The easy way:
-
 ```bash
- npm install
-```
-
-the 3x harder way:
-```bash
- npm install socket.io
  npm install webrtc.io
+ npm install socket.io
 ```
 (from here you can clone the demo repo and use the demo, use the example code, or write your own webRTC app!)
 
@@ -73,8 +66,9 @@ io.sockets.on('connection', function(socket) {
 
 ## Stumped?
 ```
-
 #webrtc.io on freenode
+```
 
+```
 We've done house calls in the past (also known as walking down the hall)... we'll totally do it again if you fly us out!
 ```
