@@ -15,8 +15,11 @@ This is a multi-person chat room demo written using our webRTC.io library. [Exam
 ## Installation
 
 ```bash
+$ npm install socket.io
 $ npm install webrtc.io
+
 ```
+(from here you can clone the demo repo and use the demo, use the example code, or write your own webRTC app!)
 
 ## Browser Support
 webRTC is supported in very few browsers. We recommend either chrome frome either the dev channel or the canary release.
