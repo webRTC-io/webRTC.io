@@ -69,6 +69,4 @@ io.sockets.on('connection', function(socket) {
 #webrtc.io on freenode
 ```
 
-```
 We've done house calls in the past (also known as walking down the hall)... we'll totally do it again if you fly us out!
-```
