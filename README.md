@@ -19,7 +19,7 @@ After installation, go to [About://flags](chrome://flags/). Enable
 Enable Media Source API on <video> elements. (this may be unnecessary)
 Enable MediaStream (this may be unnecessary)
 Enable PeerConnection
-
+```
 
 ## Client
 
