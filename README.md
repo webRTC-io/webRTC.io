@@ -1,39 +1,38 @@
-RTC.io
-=========
+# RTC.io
 
 An abstraction layer for webRTC. Aim is to simplify the HTML5 web standard webRTC in a similar manner to socket.io w/ websockets.
 
-Client
+## Installation
+
+```bash
+$ npm install webrtc.io
+```
+
+## Client
+
 ```html
-<script src="/rtc.io/rtc.io.js"></script>
+<video id="local" autoplay></video>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/webrtc.io/webrtc.io.js"></script>
 <script>
-    server = rtc.sync(server, [video1]);
-    rtc.onSync(console.log('Connected to server' );
-    rtc.onConnect('initialize video screen for stream');
-
-    
-    rtc.sync(serverIP, [list of arbitrary types]);
-    rtc.addPeers();
-    rtc.addPeer(peer, success(), fail());
-    rtc.onConnect( do stuff);
-
+  rtc.createStream('local');
+  rtc.connect('http://yourserveraddress');
+  rtc.on('ready', function() {
+    // all streams are loaded
+  });
 </script>
 ```
 
-Server
+## Server
+
 ```javascript
-var rtc = require('rtc.io');
-rtc.onSync(function( data){
-    var peers = rtc.getConnectedPeers()
-    for node in peers {
-        if (node.page == 'chat'){
-            rtc.connect(me,node);
-        }
-    }
+var io = require('webrtc.io');
+io.listen(8000);
+// this is a simple wrapper around socket.io, so you can define your own events
+// like so:
+io.sockets.on('connection', function(socket) {
+  socket.on('chat', function(nick, message) {
+    socket.broadcast.emit('chat', nick, message);
+  });
 });
-
-rtc.sendPeer([list of peers]);
-rtc.onSync();
-rtc.getPeers();
-
 ```
