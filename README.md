@@ -1,11 +1,14 @@
-# RTC.io
+# webRTC.io
 
 An abstraction layer for webRTC. Aim is to simplify the HTML5 web standard webRTC in a similar manner to socket.io w/ websockets. This project is still in an infintile stage, please send feature requests (or pulls!) to us as well as bug reports.
 
 ## What is webRTC?
 webRTC is a new webstandard being developed for peer-to-peer communication on the web. This means that browsers will be able to send information, encrypted or not, without sending information through the server. Server side this will reduce load dramatically. 
 Currently the webRTC standard is very focused on the video & audio aspects of the project. In the future (hopefully near future!) they will begin implementing the data channel, which will allow arbitrary data to be sent peer-to-peer. For now the webRTC team is focused on stabalizing and optimizing the video and audio channels.
+Unfortunately, a server (or two) will still be required for two reasons, The media for the page must be initially supplied, and the server, in conjunction with a [STUN server](http://en.wikipedia.org/wiki/STUN) (abstracted away by the webRTC.io library), is required to synchronize the connections.
 
+## Demo
+`
 ## Installation
 
 ```bash
