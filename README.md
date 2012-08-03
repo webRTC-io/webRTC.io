@@ -22,7 +22,13 @@ Enable PeerConnection
 This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://multiwebrtc.nodejitsu.com) & [Repository](http://www.github.com/dennismartensson/webrtc.io-demo/) (browser support section still applies!)
 
 ## Installation
+The easy way:
 
+```bash
+ npm install
+```
+
+the 3x harder way:
 ```bash
  npm install socket.io
  npm install webrtc.io
@@ -33,7 +39,7 @@ the demo site requires express as well
 ```bash
  npm install express
 ```
-
+for absurdly detailed instruction on setting up the demo, go to the demo repo.
 ## Example code
 
 ### Client
@@ -67,5 +73,8 @@ io.sockets.on('connection', function(socket) {
 
 ## Stumped?
 ```
+
 #webrtc.io on freenode
+
+We've done house calls in the past (also known as walking down the hall)... we'll totally do it again if you fly us out!
 ```
