@@ -70,3 +70,9 @@ io.sockets.on('connection', function(socket) {
 ```
 
 We've done house calls in the past (also known as walking down the hall)... we'll totally do it again if you fly us out!
+
+
+### Collaborators
+    [@dennismatensson](https://github.com/dennismartensson)
+    [@cavedweller](https://github.com/cavedweller)
+    [@sarenji](https://github.com/sarenji)
