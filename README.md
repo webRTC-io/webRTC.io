@@ -73,6 +73,6 @@ We've done house calls in the past (also known as walking down the hall)... we'l
 
 
 ### Collaborators
-    [@dennismatensson](https://github.com/dennismartensson)
-    [@cavedweller](https://github.com/cavedweller)
-    [@sarenji](https://github.com/sarenji)
+[@dennismatensson](https://github.com/dennismartensson)
+[@cavedweller](https://github.com/cavedweller)
+[@sarenji](https://github.com/sarenji)
