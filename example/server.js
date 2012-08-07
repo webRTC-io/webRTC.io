@@ -1,7 +1,9 @@
-var rtc = require('../lib/webrtc.io')
-rtc.listen(8001);
+//SERVER
+var webRTC = require('../lib/webrtc.io').listen(8000);
 
-rtc.on('connection', function() {
-  console.log("connection received");
+console.log('webRTC');
+console.log(webRTC);
+
+webRTC.rtc.on('connection', function(){
+    console.log('connection');
 });
-
