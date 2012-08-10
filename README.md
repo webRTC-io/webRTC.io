@@ -19,7 +19,7 @@ Enable PeerConnection
 ```
 
 ## Demo
-This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://multiwebrtc.nodejitsu.com) & [Repository](http://www.github.com/dennismartensson/webrtc.io-demo/) (browser support section still applies!)
+This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://multiwebrtc.nodejitsu.com) & [Repository](http://www.github.com/webRTC/webrtc.io-demo/) (browser support section still applies!)
 
 ## Installation
 ```bash
@@ -32,7 +32,6 @@ for absurdly detailed instruction on setting up the demo, go to the demo repo.
 
 
 ```html
-<video id="local" autoplay></video>
 <script src="/webrtc.io.js"></script>
 <script>
   rtc.createStream({"video": true, "audio":true}, function(stream){
