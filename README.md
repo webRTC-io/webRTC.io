@@ -23,7 +23,7 @@ This is a multi-person chat room demo written using our webRTC.io library. [Exam
 
 ## Installation
 ```bash
- npm install 
+ npm install webRTC.io
 ```
 for absurdly detailed instruction on setting up the demo, go to the demo repo.
 ## Example code
@@ -37,7 +37,7 @@ for absurdly detailed instruction on setting up the demo, go to the demo repo.
 <script src="/webrtc.io/webrtc.io.js"></script>
 <script>
   rtc.createStream('local');
-  rtc.connect('http://yourserveraddress');
+  rtc.connect('ws://yourserveraddress');
   rtc.on('ready', function() {
     // all streams are loaded
   });
@@ -47,14 +47,8 @@ for absurdly detailed instruction on setting up the demo, go to the demo repo.
 ### Server
 
 ```javascript
-var io = require('webrtc.io').listen(8000);
-// this is a simple wrapper around socket.io, so you can define your own events
-// like so:
-io.sockets.on('connection', function(socket) {
-  socket.on('chat', function(nick, message) {
-    socket.broadcast.emit('chat', nick, message);
-  });
-});
+var webRTC = require('webrtc.io').listen(8001);
+//then a bunch of callbacks are available
 ```
 
 ## Stumped?
@@ -62,16 +56,8 @@ io.sockets.on('connection', function(socket) {
 #webrtc.io on freenode
 ```
 
-We've done house calls in the past (also known as walking down the hall)... we'll totally do it again if you fly us out!
-
-
-### Collaborators
-[@dennismatensson](https://github.com/dennismartensson)
-[@cavedweller](https://github.com/cavedweller)
-[@sarenji](https://github.com/sarenji)
-
 ### License
-Copyright (C) 2012 Ben Brittain, Dennis Mårtensson, David Peter
+Copyright (C) 2012 [Ben Brittain](htpps://github.com/cavedweller), [Dennis Mårtensson](https://github.com/dennismartensson), [David Peter](https://github.com/sarenji)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
