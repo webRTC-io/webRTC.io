@@ -33,14 +33,13 @@ for absurdly detailed instruction on setting up the demo, go to the demo repo.
 
 ```html
 <video id="local" autoplay></video>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/webrtc.io/webrtc.io.js"></script>
+<script src="/webrtc.io.js"></script>
 <script>
-  rtc.createStream('local');
-  rtc.connect('ws://yourserveraddress');
-  rtc.on('ready', function() {
-    // all streams are loaded
-  });
+  rtc.createStream({"video": true, "audio":true}, function(stream){
+    // get local stream for manipulation
+  }
+  rtc.connect('ws://yourserveraddress:8001', optionalRoom);
+//then a bunch of callbacks are available
 </script>
 ```
 
