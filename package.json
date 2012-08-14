@@ -1,6 +1,6 @@
 {
   "name": "webrtc.io",
-  "version": "0.0.2-2",
+  "version": "0.0.2-3",
   "description": "Abstraction for webRTC.",
   "main": "index.js",
   "repository": {
