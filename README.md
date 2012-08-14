@@ -26,6 +26,9 @@ This is a multi-person chat room demo written using our webRTC.io library. [Exam
  npm install webRTC.io
 ```
 for absurdly detailed instruction on setting up the demo, go to the demo repo.
+
+To run the server in debug mode, append '-debug' to the node command
+
 ## Example code
 
 ### Client
