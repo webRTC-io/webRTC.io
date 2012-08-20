@@ -1,5 +1,5 @@
 # webRTC.io
-### [demo](http://multiwebrtc.nodejitsu.com)
+### [demo](bit.ly/webrtcio)
 An abstraction layer for webRTC. Aim is to simplify the HTML5 web standard webRTC in a similar manner to socket.io w/ websockets. This project is still in an infintile stage, please send feature requests (or pulls!) to us as well as bug reports.
 
 ## What is webRTC?
