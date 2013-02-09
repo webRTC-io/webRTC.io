@@ -19,7 +19,7 @@ Enable PeerConnection
 ```
 
 ## Demo
-This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://multiwebrtc.nodejitsu.com) & [Repository](http://www.github.com/webRTC/webrtc.io-demo/) (browser support section still applies!)
+This is a multi-person chat room demo written using our webRTC.io library. [Example Site](http://bit.ly/webrtcio) & [Repository](http://www.github.com/webRTC/webrtc.io-demo/) (browser support section still applies!)
 
 ## Installation
 ```bash
