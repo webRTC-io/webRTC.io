@@ -40,6 +40,8 @@ To run the server in debug mode, append '-debug' to the node command
 <script src="/webrtc.io.js"></script>
 <script>
 
+  // note: make sure hostname available to all connecting clients
+  // (ie. probably not `localhost`)
   rtc.connect('ws://yourserveraddress:8001');
 
   rtc.createStream({"video": true, "audio":false}, function(stream){
