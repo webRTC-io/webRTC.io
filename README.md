@@ -1,9 +1,9 @@
 # webRTC.io
 ### [demo](http://webrtc.dennis.is/)
-An abstraction layer for webRTC. Aim is to simplify the HTML5 web standard webRTC in a similar manner to socket.io w/ websockets. This project is still in an infintile stage, please send feature requests (or pulls!) to us as well as bug reports.
+An abstraction layer for webRTC. Aim is to simplify the HTML5 web standard webRTC in a similar manner to socket.io w/ websockets. This project is still in an infantile stage, please send feature requests (or pulls!) to us as well as bug reports.
 
 ## What is webRTC?
-webRTC is a new webstandard being developed for peer-to-peer communication on the web. This means that browsers will be able to send information, without sending information through the server. Server side this will reduce load dramatically. 
+webRTC is a new webstandard being developed for peer-to-peer communication on the web. This means that browsers will be able to send information, without sending information through the server. Server side this will reduce load dramatically.
 
 Currently the webRTC standard is very focused on the video & audio aspects of the project. In the future (hopefully near future!) they will begin implementing the data channel, which will allow arbitrary data to be sent peer-to-peer. For now the webRTC team is focused on stabalizing and optimizing the video and audio channels.
 
@@ -33,15 +33,28 @@ To run the server in debug mode, append '-debug' to the node command
 
 ### Client
 
-
 ```html
+<video id="local" autoplay="autoplay"></video>
+<video id="remote" autoplay="autoplay"></video>
+
 <script src="/webrtc.io.js"></script>
 <script>
-  rtc.createStream({"video": true, "audio":true}, function(stream){
+
+  // note: make sure hostname available to all connecting clients
+  // (ie. probably not `localhost`)
+  rtc.connect('ws://yourserveraddress:8001');
+
+  rtc.createStream({"video": true, "audio":false}, function(stream){
     // get local stream for manipulation
-  }
-  rtc.connect('ws://yourserveraddress:8001', optionalRoom);
-//then a bunch of callbacks are available
+    rtc.attachStream(stream, 'local');
+  });
+
+  rtc.on('add remote stream', function(stream){
+    // show the remote video
+    rtc.attachStream(stream, 'remote');
+  });
+
+  // more rtc callbacks are available
 </script>
 ```
 
